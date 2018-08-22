@@ -56,11 +56,11 @@ public class FlightDetails {
 		   ResultSet rs = smt.executeQuery(query);
 		   if(!rs.next()) {
 		   PreparedStatement pStmt;
-      	  query = "INSERT INTO booking (fNo, Bid, seats , meal, status, cost) VALUES (?, ?, ?, ?, ?, ?)";
-      	  pStmt = con.prepareStatement(query);
+      	   query = "INSERT INTO booking (fNo, Bid, seats , meal, status, cost) VALUES (?, ?, ?, ?, ?, ?)";
+      	   pStmt = con.prepareStatement(query);
       	 try {
       		
-      	 pStmt.setInt (1, this.FlightNo);
+      	   pStmt.setInt (1, this.FlightNo);
            pStmt.setInt (2,b.BookId);
            pStmt.setString(3,b.seatsBooked.toString());
            
@@ -116,21 +116,21 @@ public class Booking{
 	 public int getBookId() {
 		 return BookId;
 	 }
-	public List<Integer> getSeatsBooked() {
+	 public List<Integer> getSeatsBooked() {
 		return seatsBooked;
-	}
-	public void setSeatsBooked(List<Integer> seatsBooked) {
+	 }
+	 public void setSeatsBooked(List<Integer> seatsBooked) {
 		this.seatsBooked = seatsBooked;
-	}
-	public double getCost() {
+	 }
+	 public double getCost() {
 		return cost;
-	}
-	public void setCost(double cost) {
+	 }
+	 public void setCost(double cost) {
 		this.cost = cost;
-	}
-	public boolean isMealPreference() {
+	 }
+	 public boolean isMealPreference() {
 		return mealPreference;
-	}
+	 }
 	public void setMealPreference(boolean mealPreference) {
 		this.mealPreference = mealPreference;
 	}
@@ -143,18 +143,18 @@ public class Booking{
 	public boolean getStatus() {
 		return status; 
 	}
-}
- public boolean displayBookingSummary(int bookId) {
-	 Booking br = getBooking(bookId);
-	 if(br!=null) {
+	}
+ 	public boolean displayBookingSummary(int bookId) {
+ 		Booking br = getBooking(bookId);
+ 		if(br!=null) {
 			 	 System.out.println("booking summary");
 				 System.out.println("Booking Id: "+br.BookId+" Cost:"+br.getCost()+
 					 " MealPref: "+ br.isMealPreference()+ "Seats:"+br.getSeatsBooked()+"Status :"+(br.getStatus()? "Confirm":"Canceled"));
 				 return true;
 	 
-	 		}
+ 			}
 	return false;
- }
+ 	}
 
 	public void displayBookingSummary() {
 	 Booking br = getBookingRecord();
@@ -175,7 +175,7 @@ public class Booking{
 		 }while(br!=null);
 		System.out.println("Total income :" +total);
 	 }
- }
+	}
 	 public void updateBaseFare(boolean classPref) {
     	if(classPref)
     		BASE_FARE_BIS+=200;
@@ -206,9 +206,7 @@ public class Booking{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		
+		}	
 	}
 	public void cancelBooking(int id) {
 		Booking br = this.getBooking(id);
@@ -284,11 +282,10 @@ public class Booking{
 	   }
 	return temp;
 	 
- }
+ 	}
    public List<Integer> seatsAvailablity(boolean classPref) {
 	  
 	  return (classPref?(this.bisAvailability()):(this.ecoAvailability()));
-	   
 	   
    }
 	public List<Integer> mealPref(){
