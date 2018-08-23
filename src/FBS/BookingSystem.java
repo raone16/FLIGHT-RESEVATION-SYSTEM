@@ -95,7 +95,7 @@ public class BookingSystem {
     	}
 	public static void updateOld(Connection con) {
 		Statement stmt = null;
-		FlightDetails f;
+		FlightDetails f=null;
 		int tempId;
 		
 	    String query ="SELECT * from booking";
@@ -106,11 +106,12 @@ public class BookingSystem {
 	        while (rs.next()) {
 	      
 	        	tempId = rs.getInt("fNo")-101;
-	        	try{f=l.get(tempId);}
+	        	for(int i=0;i<=tempId;i++) {
+	        	try{f=l.get(i);}
     			catch(Exception e) {
     				addflight();
-    				f=l.get(tempId);
-    			}
+    				f=l.get(i);
+    			}}
     				
 	        	String s1= rs.getString("seats");
   			  s1 = s1.replace("[","");

@@ -39,9 +39,7 @@ public class FlightDetails {
 
 		try {
 
-			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:" + "XE","SYSTEM",
-					"rec123");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + "XE","SYSTEM","rec123");
 			return connection;
 
 		} catch (SQLException e) {
