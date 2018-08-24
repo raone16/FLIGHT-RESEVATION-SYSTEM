@@ -123,7 +123,7 @@ public class BookingSystem {
   				seats.add(Integer.parseInt(s));
   			}
   			//System.out.println(seats+" "+rs.getDouble("cost")+" "+(rs.getInt("meal")==1 ? true:false)+" "+(seats.get(0)<6)+" "+(rs.getInt("status")==1 ? true:false));
-  			f.makeBooking(seats,rs.getDouble("cost"),(rs.getInt("meal")==1 ? true:false),(seats.get(0)<6),(rs.getInt("status")==1 ? true:false));
+  			f.makeBooking(seats,rs.getDouble("cost"),(rs.getInt("meal")==1 ? true:false),(seats.get(0)<6),(rs.getInt("status")==1 ? true:false),rs.getInt("bid"));
 	    	
 	    }}
 	    catch(Exception e) {

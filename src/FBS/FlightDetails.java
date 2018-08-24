@@ -10,6 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import FBS.FlightDetails.Booking;
+
 public class FlightDetails {
 	private static int count = 100;
 	private static int noOfBook = 0;
@@ -100,6 +102,13 @@ public class Booking{
 	  private boolean mealPreference = false;
 	  private boolean status = true;
 	  private Booking next = null;
+	  public  Booking(List<Integer> seats,double cost,boolean meal,int bookId){
+		  this.seatsBooked = seats;
+		  this.cost = cost;
+		  this.mealPreference = meal;
+		  noOfBook++;
+		 BookId = bookId;
+	  }
 	 public  Booking(List<Integer> seats,double cost,boolean meal){
 		  this.seatsBooked = seats;
 		  this.cost = cost;
@@ -215,6 +224,27 @@ public class Booking{
 		     updateDb(id);
 		}
 	}
+	public void makeBooking(List<Integer> seats,double cost,boolean mealPref,boolean classPref,boolean status,int id) {
+		Booking br = this.getBookingRecord();
+		Booking newBook=new Booking(seats,cost,mealPref,id); 
+		newBook.setStatus(status);
+		//System.out.println("inside make entry");
+		for(int i:seats) {
+			this.seat[i]=true;
+		}
+		if(br!=null) {
+			while(br.next!=null) {
+				br=br.next;
+			}
+			br.next = newBook;
+		}
+		else {
+			this.setBookingRecord(newBook);
+			//System.out.println("new entry");
+		}
+		
+		updateBaseFare(classPref);
+		}
 	
 	public void makeBooking(List<Integer> seats,double cost,boolean mealPref,boolean classPref,boolean status) {
 		Booking br = this.getBookingRecord();
