@@ -109,6 +109,7 @@ public class Booking{
 		  noOfBook++;
 		 BookId = bookId;
 	  }
+	  
 	 public  Booking(List<Integer> seats,double cost,boolean meal){
 		  this.seatsBooked = seats;
 		  this.cost = cost;
