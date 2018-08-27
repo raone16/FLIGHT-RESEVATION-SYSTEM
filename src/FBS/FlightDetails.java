@@ -291,6 +291,7 @@ public class Booking{
 			   seat = in.nextInt();
 			   if(avail.contains(seat)) {
 				   temp.add(seat);
+				   avail.remove(avail.indexOf(seat));
 				   n--;
 			   }
 			   else 
